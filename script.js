@@ -98,6 +98,7 @@ function generatePassword() {
   var passwordLength = window.prompt(
     "Please enter Password length. Atleast 8, no more than 128 characters."
   );
+  console.log(passwordLength);
 
   possibleChar.push.apply(possibleChar, lettersChar);
 
@@ -111,24 +112,27 @@ function generatePassword() {
   if (special == "Yes") {
     possibleChar.push.apply(possibleChar, specialChar);
   }
+  console.log(special);
   var numbersOkay = window.prompt("Would you like to include numbers?");
   numbersOkay = numbersOkay.toUpperCase();
 
   if (numbersOkay == "Yes") {
     possibleChar.push.apply(possibleChar, numbersChar);
   }
+  console.log(numbersOkay);
   var capLetters = window.prompt("Would you like to include Capital Letters?");
   capLetters = capLetters.toUpperCase();
 
   if (capLetters == "Yes") {
     possibleChar.push.apply(possibleChar, capLettersChar);
   }
-  // console.log(possibleChar);
+  console.log(capLetters);
   var password = "";
-  for (i = 0; i <= length; i++) {
+  for (i = 0; i <= passwordLength; i++) {
     var randomNum = Math.floor(Math.random() * possibleChar.length);
     password += possibleChar[randomNum];
   }
+  console.log(password);
 
   return password;
 }
@@ -136,7 +140,7 @@ function generatePassword() {
 // Write password to the #password input
 function writePassword() {
   var passwordText = document.querySelector("#password");
-  passwordText.value - " ";
+  passwordText.value = " ";
   var password = generatePassword();
   passwordText.value = password;
 }
